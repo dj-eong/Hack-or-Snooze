@@ -208,10 +208,8 @@ class User {
   }
 
   async deleteYourStory(story) {
-    this.ownStories.splice(this.ownStories.indexOf(story), 1);
-    if (this.favorites.indexOf(story) != -1) {
-      this.favorites.splice(this.favorites.indexOf(story), 1);
-    }
+    this.ownStories = this.ownStories.filter(s => s.storyId !== story.storyId);
+    this.favorites = this.favorites.filter(s => s.storyId !== story.storyId);
     await axios({
       url: `${BASE_URL}/stories/${story.storyId}`,
       method: "DELETE",

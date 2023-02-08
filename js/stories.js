@@ -149,7 +149,7 @@ async function removeYourStory(evt) {
   for (let story of currentUser.ownStories) {
     if (story.storyId == evt.target.parentElement.id) {
       evt.target.parentElement.remove();
-      storyList.stories.splice(storyList.stories.indexOf(story), 1);
+      storyList.stories = storyList.stories.filter(s => s.storyId !== story.storyId);
       await currentUser.deleteYourStory(story);
     }
   }
