@@ -111,6 +111,7 @@ $('#nav-favorites').on('click', putFavoritesOnPage);
 async function alterStarOnClick(evt) {
   const $star = $(evt.target);
 
+  //filter or find array method
   for (let story of storyList.stories) {
     if (story.storyId == evt.target.parentElement.id) {
       if ($star.hasClass('fas')) {
